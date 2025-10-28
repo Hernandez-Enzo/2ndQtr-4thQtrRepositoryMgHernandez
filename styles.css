@@ -1,0 +1,118 @@
+ * {
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+body {
+    background-color: #7f7d7d;
+}
+.header {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 30px;            /* space between image and text */
+    padding: 20px;
+}
+
+.titles h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.title h2 {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+.nav{
+    background: #666;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+    padding: 4px;
+    gap: 10px;
+}
+
+.navbar__item a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding: 10px 20px;
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    background: #2a2a2a;
+    color: #fff;
+}
+
+section {
+    color: #d3d3d3;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 1rem 1rem;
+    height: 100%;
+}
+section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+}
+
+section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #eee;
+}
+
+.section-image-wrap{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;             
+    position: relative;     
+}
+
+.section-image{
+    width: 100%;
+    max-width: 4000px;
+    height: 600px;
+    background: url('./assets/Sunset.jpg') center/cover no-repeat;
+    clip-path: inset(0 0 1% 0);
+}
+
+.section-image::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.25));
+    pointer-events: none;
+}
+
+.overlay{
+    position: absolute;
+    top: 87%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: #ffffff;
+    text-align: center;
+    padding: 1.5rem;
+    width: min(90%, 900px);
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .section-image { height: 360px; }
+    .overlay h2 { font-size: 1.4rem; }
+    .overlay { padding: 1rem; }
+}
+
+@media (max-width: 480px) {
+    .section-image { height: 260px; }
+    .overlay { width: 95%; }
+}

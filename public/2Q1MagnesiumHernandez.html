@@ -4,12 +4,469 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schoogle Website</title>
-    <link rel="stylesheet" href="./styles.css"/>
+    <link rel="stylesheet" href="./groupstyles.css"/>
     <link rel = "stylesheet" href = "https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
 </head>
+<style>
+    .main{
+    background-color: #141414;
+}
+
+.main__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-self: center;
+    margin: 0 auto;
+    height: 90vh;
+    background-color: #141414;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    padding: 0 50px;
+}
+
+.main__content h1 {
+    font-size: 4rem;
+    background-color: #ff8177;
+    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+.main__content h2 {
+    font-size: 4rem;
+    background-color: #ff8177;
+    background-image: linear-gradient(to top, #b721ff 0%, #21d4fd 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+.main__content p {
+    margin-top: 1rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.main__btn {
+    font-size: 1rem;
+    background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%);
+    padding: 14px 32px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    margin-top: 2rem;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.35s ease;
+    outline: none;
+}
+
+.main__btn a {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    text-decoration: none;
+}
+
+.main__btn:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #4837ff;
+    transition: all 0.35s;
+    border-radius: 4px;
+}
+
+.main__btn:hover {
+    color: #fff;
+}
+
+.main__btn:hover:after {
+    width: 100%;
+}
+
+.sub__btn {
+    font-size: 1rem;
+    background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%);
+    padding: 14px 32px;
+    border: none;
+    border-radius: 0px;
+    color: #fff;
+    margin-top: 0rem;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.35s ease;
+    outline: none;
+}
+
+.sub__btn a {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    text-decoration: none;
+}
+
+.main__img--container {
+    text-align: center;
+}
+
+#main__img {
+    height: 80%;
+    width: 80%;
+}
+
+/* Mobile Responsive */
+
+@media screen and (max-width: 768px) {
+    .main__container {
+        display: grid;
+        grid-template-columns: auto;
+        align-items: center;
+        justify-self: center;
+        width: 100%;
+        margin: 0 auto;
+        height: 90vh;
+    }
+
+    .main__content {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .main__content h1 {
+        font-size: 2.5rem;
+        margin-top: 2rem;
+    }
+
+    .main__content h2 {
+        font-size: 3rem;
+    }
+
+    .main__content p {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main__content h1 {
+        font-size: 2rem;
+        margin-top: 3rem;
+    }
+
+    .main__content h2 {
+        font-size: 2rem;
+    }
+
+    .main__content p {
+        margin-top: 2rem;
+        font-size: 1.5rem;
+    }
+
+    .main__btn {
+        padding: 12px 35px;
+        margin: 2.5rem 0;
+    }
+}
+
+/* Services Section CSS*/
+
+.services {
+    background: #141414;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.services h1 {
+    background-color: #ff8177;
+    background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+    background-size: 100%;
+    margin-bottom: 5rem;
+    font-size: 2.5rem;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+.services__container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.services__card {
+    margin: 1rem;
+    height: 525px;
+    width: 400px;
+    border-radius: 4px;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(17,17,17,0.6) 100%), url('../assets/img1.jpg');
+    background-size: cover;
+    position: relative;
+    color: #fff;
+}
+
+.services__card:nth-child(2) {
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(17,17,17,0.6) 100%), url('../assets/img2.jpg');
+
+}
+
+.services h2 {
+    position: absolute;
+    top: 350px;
+    left: 30px;
+}
+
+.services__card p {
+    position: absolute;
+    top: 400px;
+    left: 30px;
+}
+
+.services__card button {
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background: #f77062;
+    position: absolute;
+    top: 440px;
+    left: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.services__card:hover {
+    transform: scale(1.075);
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+}
+
+.wrapper {
+    display: flex;
+    padding-top: 50px;
+    justify-content: center;
+}
+
+.collapsible {
+    max-width: 1000px;
+    overflow: hidden;
+    font-weight: 500;
+}
+
+.collapsible input {
+    display: none;
+}
+
+.collapsible label {
+    position: relative;
+    font-weight: 600;
+    background: #fff;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.1), 0 4px 11px 0 rgba(0,0,0,.08);
+    color: #1c1c6b;
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+    z-index: 1;
+}
+
+.collapsible label:after {
+    content: "";
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 24px;
+    height: 24px;
+    background: url('../assets/right.svg') no-repeat 0 0;
+    background-size: contain;
+    transition: all 0.3s ease;
+}
+
+.collapsible input:checked + label:after{
+    transform: rotate(90deg);
+}
+
+.collapsible-text {
+    max-height: 1px;
+    overflow: hidden;
+    border-radius: 4px;
+    line-height: 1.4;
+    position: relative;
+    top: -100%;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.collapsible input:checked + label + .collapsible-text {
+    max-height: 2000px;
+    overflow: visible;
+    padding-bottom: 25px;
+    background: #fff;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.1), 0 4px 11px 0 rgba(0,0,0,.08);
+    opacity: 1;
+    top: 0;
+}
+
+.collapsible-text h2 {
+    margin-bottom: 10px;
+    padding: 15px 15px 0;
+    color: #1c1c6b;
+}
+
+.collapsible-text p {
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #333;
+}
+
+.collapsible-text table {
+    width: 100%;
+    padding: 8px;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+.collapsible-text th,
+.collapsible-text td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+ iframe {
+    width: 1000px;
+    height: 562.5px;
+    max-width: 100%;
+  }
+
+
+@media screen and (max-width: 960px) {
+    .services {
+        height: 1600px;
+    }
+
+    .services h1 {
+        font-size: 2rem;
+        margin-top: 12rem;
+    }
+
+     table, thead, tbody, th, td, tr {
+      display: block;
+      width: 100%;
+    }
+
+    thead tr:first-child {
+      display: none;
+    }
+
+    tr {
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px;
+      background-color: #fff;
+    }
+
+    td {
+      text-align: left;
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      padding: 8px;
+      border-bottom: 1px solid #eee;
+    }
+
+    td:last-child {
+      border-bottom: none;
+    }
+
+    td::before {
+      content: attr(data-label);
+      font-weight: bold;
+      flex: 1;
+      text-align: left;
+    }
+
+     iframe {
+      width: 960px;
+      height: 540px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .services {
+        height: 1400px;
+    }
+    .services h1 {
+        font-size: 1.2rem;
+    }
+    .services__card {
+        width: 300px;
+    }
+
+     table, thead, tbody, th, td, tr {
+      display: block;
+      width: 100%;
+    }
+
+    thead tr:first-child {
+      display: none;
+    }
+
+    tr {
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px;
+      background-color: #fff;
+    }
+
+    td {
+      text-align: left;
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      padding: 8px;
+      border-bottom: 1px solid #eee;
+    }
+
+    td:last-child {
+      border-bottom: none;
+    }
+
+    td::before {
+      content: attr(data-label);
+      font-weight: bold;
+      flex: 1;
+      text-align: left;
+    }
+
+     iframe {
+      width: 480px;
+      height: 270px;
+    }
+}
+
+</style>
 <body>
     <!-- Navbar Section --> 
     <nav class="navbar">
