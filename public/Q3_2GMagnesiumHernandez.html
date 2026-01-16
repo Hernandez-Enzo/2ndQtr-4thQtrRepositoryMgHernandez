@@ -5,29 +5,7 @@
     <link rel="stylesheet" href="style2G.css" />
   </head>
    <style>
-    body{
-        padding: 25px;
-        font-family: arial;
-        width: 80%;
-        margin-left: 10%;
-        }
-
-        .title {
-            color: #0fb340;
-        }
-
-        fieldset:nth-child(2) {
-             margin-top: 20px;
-        }
-
-        legend {
-            background: rgb(43, 93, 68);
-            color: rgb(0, 255, 81);
-            padding: 5px;
-        }
-        label {
-             margin: 5%;
-        }
+    
     </style>
 <body>
     <header>
@@ -35,43 +13,45 @@
     </header>
     <section>
 
+
    <h1 class="title">Sign-up Page</h1>
+   <form id="dForm" action="submit" method="post" >
     <fieldset>
-        <form id="dForm" action="registered.html" method="get">
-    <legend>Your Credentials</legend><br/>
+    <legend>Your Credentials</legend>
+
 
       <label> Student ID :
-        <input type="number" name="id" id="id" required />
+        <input type="number" name="id" id="id" onfocus="changecolor(this)" onblur="resetcolor(this)"required />
      </label></br/>
       <label> Full Name :
-        <input type="text" name="fullname" id="fullname" required />
+        <input type="text" name="fullname" id="fullname" onfocus="changecolor(this)" onblur="resetcolor(this)"required />
      </label></br/>
       <label> Date of Birth :
-        <input type="date" name="Date of Birth" id="Date of Birth" required />
+        <input type="date" name="Date of Birth" id="Date of Birth" onfocus="changecolor(this)" onblur="resetcolor(this)"required />
      </label></br/>
       <label> Email Address :
-        <input type="email" name="email" id="email" required />
+        <input type="email" name="email" id="email" onfocus="changecolor(this)" onblur="resetcolor(this)"required />
      </label></br/>
       <label> Mobile Number :
-        <input type="number" name="mobile" id="mobile" required/>
+        <input type="number" name="mobile" id="mobile" onfocus="changecolor(this)" onblur="resetcolor(this)"required/>
      </label></br/>
      <label> Grade Level :
-        <select name="grade" id="grade">
+        <select name="grade" id="grade" onfocus="changecolor(this)" onblur="resetcolor(this)"required>
         <option value="Grade 7">Grade 7</option>
         <option value="Grade 8">Grade 8</option>
         <option value="Grade 9">Grade 9</option>
         <option value="Grade 10">Grade 10</option>
         <option value="Grade 11">Grade 11</option>
         <option value="Grade 12">Grade 12</option>
-        
+       
       </select>
       </label></br/>
       <label> Intern/Extern :
-        <input type="radio" name="in/out" value="Intern" /> Intern
-        <input type="radio" name="in/out" value="Extern" /> Extern
+        <input type="radio" name="in/out" value="Intern" required/> Intern
+        <input type="radio" name="in/out" value="Extern" required/> Extern
      </label></br/>
       <label> Preferred Organization :
-        <select name="Organization" id="Organization">
+        <select name="Organization" id="Organization" onfocus="changecolor(this)" onblur="resetcolor(this)"required>
         <option value="Pisay XYZ">Pisay XYZ</option>
         <option value="Sars+">Sars+</option>
         <option value="Intyale">Intyale</option>
@@ -82,22 +62,26 @@
       </select>
      </label></br/>
       <label> Why do you want to join? :
-        <textarea name="why" id="why">
+        <textarea name="why" id="why" onfocus="changecolor(this)" onblur="resetcolor(this)" required>
         </textarea>
      </label></br/>
      </fieldset>
 
+
              <fieldset>
           <legend>Action Buttons</legend>
           <button type="submit"> Accept </button>
-          <input type="reset" value=" Clear " />
-        </fieldset>   
+          <button type="reset"> Clear </button>
+          
+        </fieldset>  
         </section>
         </form>
      <footer>References: Mendoza, A. (2025). q3ge2Mendoza PSHS-MC.</footer>
      
     <script src="js2G.js"></script>
 
+
 </body>
+
 
 </html>

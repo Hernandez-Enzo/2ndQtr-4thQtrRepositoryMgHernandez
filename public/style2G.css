@@ -1,73 +1,56 @@
 :root {
-  --bgcolor: #030403; 
+  --bgcolor: #dbeadb; 
   --fontcolor: #F2F2F2;
   --headcolor: #57BA98;
-  --bodycolor: #F7EFE5;
+  --bodycolor: #7b8d80;
 }
 * {
   font-family: Arial, sans-serif;
   box-sizing: border-box;
 }
+body{
+        padding: 25px;
+        font-family: arial;
+        width: 30%;
+        margin-left: 20%;
+        }
+
+
+.title {
+            color: #21703b;
+        }
+
+
+fieldset:nth-child(2) {
+             margin-top: 10px;
+        }
+
+
+legend {
+            background: rgb(43, 93, 68);
+            color: rgb(94, 187, 123);
+            padding: 5px;
+        }
+label {
+             color: white
+        }
+
 body {
   background-color: var(--bodycolor);
   margin: 0;
   padding: 0;
 }
 header, footer {
-  color: var(--headcolor);
+  color: white;
   padding: 10px;
 }
-header  h1 {
-  text-shadow: 2px 2px grey;
-  margin-top: 0px;
+header h2{
+  color: rgb(12, 128, 97)
 }
-header img {
-  float:left;
-  margin-right: 5px;
+h1.title{
+  text-shadow: 2px 2px rgb(17, 162, 21);
+  margin-left: 20px;
 }
-
-/* Add a grey background color on hover */
-.button:hover {
-  background-color: yellow;
-  color: black;
+button:hover {
+   background-color: yellow;
 }
-
-/* When you move the mouse over the subnav container, open the subnav content */
-.subnav:hover .subnav-content {
-  display: block;
-}
-
-section {
-  color: var(--fontcolor);
-  width: 60%;
-  margin: 5% auto;
-  border: 2px solid rgb(128, 128, 128);
-  padding: 10px;
-  background:var(--bgcolor);
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px black
-}
-footer {
-  text-decoration:underline;
-  text-align: center;
-}
- @media (max-width: 700px) {
-        section {
-          width: 90%;
-        }
-        section:not(section:nth-of-type(3)) { /* will not be applied on the 3rd section containing the youtube video */
-          flex-direction: column;
-        }
-        article {
-          width: 90%
-        }
-        nav {
-          text-align: center;
-        }
-        a:link, a:visited {
-          border-right: none;
-          border-bottom: 2px solid white;
-          display: block;
-          padding: 5px 0;
-        }
-      }
