@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style2G.css" />
+  </head>
+  <body>
+     <header>
+        <nav class="navbar">
+           <button type="button" id="signup"> Back to Sign-Ups </button>
+           <button type="button" id="home"> Back to Home </button>
+        </nav>
+        <br/>
+    </header>
+    <section>
+          <label> Select Your Club
+            <select id="clubs" onchange="showClub(this.value)">
+              <option disabled selected value> -- select an option -- </option>
+              <option value="All"> All </option>
+              <option value="AKSIS"> AKSIS </option>
+              <option value="Bake Club"> Bake Club </option>
+              <option value="Computron"> Computron </option>
+              <option value="Himig Agham"> Himig Agham </option>
+              <option value="Kamalayan"> Kamalayan </option>
+              <option value="Sagala"> Sagala </option>
+            </select>
+          </label> 
+          <p> Total Signup : <span id="tSignUps"> </span></p>
+    </section>
+    <section>
+
+      <table id="results"> </table>
+      
+    </section>
+     <script>
+      signup.onclick = () => {
+        window.location.href = "Q3_2GMagnesiumHernandez.html";
+      }
+
+      home.onclick = () => {
+        window.location.href = "../../index.html";
+      }
+
+      function showClub(theClub) {
+        totalSignUp = 0;        // to ready the counter
+        // read from the localStorage saved as a string - to see if there are anything saved on the users coomputer
+        let signupString = localStorage.getItem("clubsignups")
+        if (!signupString) { rowString = "No Accounts Found" } // initialize the variable to contain the list of accounts object
+        else {
+            signupsList = JSON.parse(signupString) // converts string into the correct data type in this case object    
+            rowString = "";
+            results.innerHTML = ""  // resets the table
+            for (let key in signupsList) {
+              if (signupsList[key].organization == theClub || theClub == 'All') {
+                rowString += "<tr>";
+                rowString += "<td>" + signupsList[key].organization + "</td>";
+                rowString += "<td>" + key + "</td>";
+                rowString += "<td>" + signupsList[key].fullname + "</td>";
+                rowString += "<td>" + signupsList[key].grade + "</td>";
+                rowString += "<td>" + signupsList[key].email + "</td>";
+                rowString += "<td>" + signupsList[key].mobile + "</td>";
+                rowString += "<td>" + signupsList[key].inout + "</td></tr>";
+                totalSignUp++
+              }
+            }
+        }
+        if (rowString) {
+          rowString = "<tr><th>Club</th><th>ID</th><th>Fullname</th><th>Grade</th><th>Email</th><th>Mobile</th><th>Intern|Extern</th></tr>"+rowString;
+          results.innerHTML = rowString;
+          tSignUps.innerHTML = totalSignUp;
+        }
+        else {
+          results.innerHTML = "No Sign Ups for the club";
+          tSignUps.innerHTML = ""
+        }
+        
+      }
+      
+      showClub('All') // call the club initially.
+
+
+    </script>
+    </body>
+</html>
