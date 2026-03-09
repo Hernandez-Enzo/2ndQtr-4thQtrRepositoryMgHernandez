@@ -58,7 +58,9 @@
                 width: 100%;
             }
             ul { list-style: none; padding: 0; margin: 0; }
-            li { padding: 4px 0; border-bottom: 1px solid #ddd; }
+            li { padding: 4px 0; border-bottom: 1px solid #ddd; display: flex; align-items: center; justify-content: space-between; }
+            button.delete-btn { background: #e74c3c; color: #fff; border: none; border-radius: 50%; padding: 0; cursor: pointer; font-size: 1rem; line-height: 1; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; }
+            button.delete-btn:hover { background: #c0392b; }
             .rate { display: flex; flex-direction: row-reverse; justify-content: center; margin: 0 auto; }
             .rate input { display: none; }
             .rate label { font-size: 2rem; color: #ccc; cursor: pointer; }
@@ -155,7 +157,7 @@
 
           // create a list of stored movies
           const ul = document.createElement('ul');
-          movies.forEach(m => {
+          movies.forEach((m, index) => {
             const li = document.createElement('li');
             // create base text and optionally add stars span
             let text = `${m.title} (${m.year}) - ${m.genre}`;
@@ -167,6 +169,20 @@
               starSpan.textContent = ' ' + '★'.repeat(m.rating);
               li.appendChild(starSpan);
             }
+            // add delete button
+            const del = document.createElement('button');
+            del.textContent = '×';
+            del.title = 'Delete';
+            del.className = 'delete-btn';
+            del.addEventListener('click', () => {
+              if (confirm(`Are you sure you want to delete "${m.title}"?`)) {
+                const movies = getMovies();
+                movies.splice(index, 1);
+                saveMovies(movies);
+                displaySavedMovies();
+              }
+            });
+            li.appendChild(del);
             ul.appendChild(li);
           });
           container.appendChild(ul);
