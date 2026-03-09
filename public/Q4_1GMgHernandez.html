@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Q4 1st Graded!</title>
+    <style>
+            body{
+                font-family: Arial, sans-serif;
+                background-color: #f0f0f0;
+                margin: 0;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            a {
+                align-self: flex-start;
+                margin-bottom: 20px;
+                color: #5C6AC4;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            a:hover { text-decoration: underline; }
+            .title {
+                color: #5C6AC4;
+                margin: 0;
+                padding: 25px;
+            }
+            fieldset {
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto 20px auto;
+                padding: 25px;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+                background: #fff;
+                border-radius: 8px;
+            }
+            input, select, button {
+                width: 100%;
+                padding: 8px;
+                margin-top: 4px;
+                box-sizing: border-box;
+                font-size: 1rem;
+            }
+            button {
+                cursor: pointer;
+                background:#5C6AC4;
+                color:#fff;
+                border:none;
+                border-radius:4px;
+                margin-top:10px;
+            }
+            /* some spacing for the movie list */
+            #savedMovies {
+                display: inline-block;
+                text-align: left;
+                margin-top: 10px;
+                width: 100%;
+            }
+            ul { list-style: none; padding: 0; margin: 0; }
+            li { padding: 4px 0; border-bottom: 1px solid #ddd; }
+            .rate { display: flex; flex-direction: row-reverse; justify-content: center; margin: 0 auto; }
+            .rate input { display: none; }
+            .rate label { font-size: 2rem; color: #ccc; cursor: pointer; }
+            .rate label:hover, .rate label:hover ~ label, .rate input:checked ~ label { color: gold; }
+
+            /* stars shown in the saved movie list */
+            .saved-stars { font-size: 2rem; color: gold; margin-left: 0.25rem; }
+
+            @media (max-width: 600px) {
+                fieldset { width: 90%; }
+            }
+    </style>
+  </head>
+  <body>
+      <a href="../index.html">Back Home</a>
+      <h1 class="title">Add a Movie</h1>
+      <form id = "form">
+      <fieldset>
+        
+      <label>Title:<br></label>
+        <input type="text" name="title" id="title" required><br>
+      
+      <label><br>Year:<br></label>
+        <input type="number" name="year" id="year" required><br>
+      
+      <label><br>Genre:<br></label>
+        <select name="genre" id="genre">
+          <option value="">Select a Genre</option>
+          <option value="Action">Action</option>
+          <option value="Romance">Romance</option>
+          <option value="Sci-fi">Sci-fi</option>
+          <option value="Slice of life">Slice of life</option>
+        </select><br>
+      
+      <label><br>Rating:<br></label>
+        <div class="rate">
+          <input type="radio" id="rating5" name="rating" value="5" /><label for="rating5" title="5 stars">★</label>
+          <input type="radio" id="rating4" name="rating" value="4" /><label for="rating4" title="4 stars">★</label>
+          <input type="radio" id="rating3" name="rating" value="3" /><label for="rating3" title="3 stars">★</label>
+          <input type="radio" id="rating2" name="rating" value="2" /><label for="rating2" title="2 stars">★</label>
+          <input type="radio" id="rating1" name="rating" value="1" /><label for="rating1" title="1 stars">★</label>
+        </div><br>
+        
+      <button type="submit" value = "Add Movie">Add Movie</button><br>
+      
+      <label><br>Movie List:<br></label>
+        <span id="savedMovies"></span>
+        
+      </fieldset>
+      </form>
+      
+      
+      
+      <script>
+        const form = document.getElementById('form');
+
+        // helper to read the movies array from localStorage
+        function getMovies() {
+          const stored = localStorage.getItem('movies');
+          return stored ? JSON.parse(stored) : [];
+        }
+
+        // helper to save the movies array back to localStorage
+        function saveMovies(movies) {
+          localStorage.setItem('movies', JSON.stringify(movies));
+        }
+
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+          const formData = new FormData(form);
+          const movie = Object.fromEntries(formData.entries());
+
+          // ensure rating is stored as number
+          if (movie.rating) movie.rating = Number(movie.rating);
+
+          const movies = getMovies();
+          movies.push(movie);
+          saveMovies(movies);
+
+          // clear the form and re-display
+          form.reset();
+          displaySavedMovies();
+        });
+
+        function displaySavedMovies() {
+          const container = document.getElementById('savedMovies');
+          container.textContent = '';
+
+          const movies = getMovies();
+          if (movies.length === 0) {
+            container.textContent = 'No movies added yet.';
+            return;
+          }
+
+          // create a list of stored movies
+          const ul = document.createElement('ul');
+          movies.forEach(m => {
+            const li = document.createElement('li');
+            // create base text and optionally add stars span
+            let text = `${m.title} (${m.year}) - ${m.genre}`;
+            li.textContent = text;
+            if (m.rating) {
+              const starSpan = document.createElement('span');
+              starSpan.className = 'saved-stars';
+              // repeat ★ character rating times
+              starSpan.textContent = ' ' + '★'.repeat(m.rating);
+              li.appendChild(starSpan);
+            }
+            ul.appendChild(li);
+          });
+          container.appendChild(ul);
+        }
+
+        // Call the function on page load to display any existing movies
+        window.onload = displaySavedMovies;
+      </script>
+  </body>
+</html>
