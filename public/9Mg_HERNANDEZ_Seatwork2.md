@@ -112,7 +112,9 @@
       - Absolute positions the element based on the closest positioned ancestor.
       - Fixed positions the element to a desired spot and makes it so that it doesn't move when scrolling
     b. How does absolute positioning depend on its parent element?
-      - 
+      - Its aligns itself based on the boundaries of the parent element
     c. How do you differentiate sticky from fixed (you can research on sticky)?
-
+      - Sticky behaves as relative positioning until it reaches a threshold where it turns fixed.
     d. If you were designing a webpage for a school event, how might you use positioning to highlight important information? Please give concrete examples.
+      - The relative positioning can allow it to be highlighted text where other elements follow it by absolute positioning 
+      - The z-index can help position the key text over design details.
